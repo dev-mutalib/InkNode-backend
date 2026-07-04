@@ -1,4 +1,5 @@
 import User from '../models/user.model.js';
+import { generateRefreshToken, verifyRefreshToken } from '../utils/jwt.js';
 
 const registerUser = async (userData) => {
   const existingUser = await User.findOne({
@@ -29,4 +30,27 @@ const loginUser = async (email, password) => {
   return user;
 };
 
-export { registerUser, loginUser };
+const refreshAccessToken = async (refreshToken) => {
+  if (!refreshToken) {
+    throw new Error('Refresh token is requires');
+  }
+
+  let decode;
+  try {
+    decode = verifyRefreshToken(refreshToken, process.env.JWT_REFRESH_SECRET);
+  } catch (error) {
+    throw new Error('Invalid or expired refresh token');
+  }
+
+  const user = User.findById(decode.id).select('+refreshToken');
+
+  if (!user || !user.refreshToken !== refreshToken) {
+    throw new Error('Refresh token is invalid or user does not exist ');
+  }
+
+  const newAccessToken = generateRefreshToken(user._id);
+
+  return { user, newAccessToken };
+};
+
+export { registerUser, refreshAccessToken, loginUser };
