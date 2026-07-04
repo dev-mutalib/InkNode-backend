@@ -1,8 +1,8 @@
 import jwt from 'jsonwebtoken';
 import 'dotenv/config';
 
-const accessSecret = process.env.ACCESS_TOKEN_SECRET;
-const refreshSecret = process.env.REFRESH_TOKEN_SECRET;
+const accessSecret = process.env.JWT_ACCESS_SECRET;
+const refreshSecret = process.env.JWT_REFRESH_SECRET;
 
 const generateAccessToken = (userId) => {
   return jwt.sign({ id: userId }, accessSecret, { expiresIn: '15m' });
