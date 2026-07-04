@@ -4,6 +4,7 @@ import cors from 'cors'
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import morgan from "morgan";
+import authRoutes from './routes/auth.routes.js';
 
 
 const app = express()
@@ -19,5 +20,8 @@ app.use(morgan('dev'))
 app.get('/', (req, res)=>{
      res.send('API is running🚀')
 })
+
+// Routes
+app.use('/api/auth', authRoutes)
 
 export default app
