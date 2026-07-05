@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema(
       default: 'user',
       enum: ['user', 'admin'],
     },
-    avatar: {
+    profile: {
       type: String,
       default: '',
     },
