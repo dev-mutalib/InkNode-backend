@@ -58,7 +58,6 @@ const postSchema = new mongoose.Schema(
 );
 
 // Indexes
-postSchema.index({ slug: 1 });
 postSchema.index({ status: 1, createdAt: -1 });
 postSchema.index({ author: 1 });
 // Text index for search (includes excerpt now)
