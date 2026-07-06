@@ -11,6 +11,7 @@ import userRoutes from './routes/user.routes.js';
 import postRoutes from './routes/post.routes.js';
 import categoryRoutes from './routes/category.routes.js';
 import tagRoutes from './routes/tag.routes.js';
+import commentRoutes from './routes/comment.routes.js';
 
 const app = express();
 
@@ -31,5 +32,6 @@ app.use('/api/users', userRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/tags', tagRoutes);
+app.use('/api/comments', commentRoutes);
 
 export default app;
