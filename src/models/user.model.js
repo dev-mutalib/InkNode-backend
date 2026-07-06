@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema(
       default: '',
       maxLength: [500, 'Bio cannot execced more 500 characters'],
     },
-    socailLinks: {
+    socialLinks: {
       website: { type: String, default: '' },
       twitter: { type: String, default: '' },
       github: { type: String, default: '' },
