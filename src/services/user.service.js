@@ -71,6 +71,10 @@ const updateUserAvatar = async (userId, file) => {
     throw new Error('User not found');
   }
 
+  if (!file) {
+    throw new Error('Avatar image is required');
+  }
+
   // 1. Upload the new avatar first
   const uploadResult = await uploadToCloudinary(file.buffer);
   const newAvatarUrl = uploadResult.secure_url;
