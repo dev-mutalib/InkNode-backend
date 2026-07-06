@@ -1,4 +1,3 @@
-// src/controllers/category.controller.js
 import * as categoryService from '../services/category.service.js';
 
 const createCategory = async (req, res) => {
